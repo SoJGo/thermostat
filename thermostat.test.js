@@ -33,4 +33,15 @@ describe(Thermostat, () => {
       expect(thermostat.getTemperature()).toEqual(10);
     })
   })
+
+  describe('setPowerSavingMode', () => {
+    it('stops temp going above 25', () => {
+      for (let i = 0 ; i < 15 ; i++) {
+        thermostat.up();
+      }
+      thermostat.up();
+
+      expect(thermostat.getTemperature()).toEqual(25);
+    })
+  })
 })
