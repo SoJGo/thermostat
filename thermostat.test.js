@@ -2,6 +2,7 @@ const Thermostat = require('./Thermostat');
 
 describe(Thermostat, () => {
   const thermostat = new Thermostat();
+  const thermostat2 = new Thermostat();
 
   describe('getTemperature', () => {
     it('returns the current temperature', () => {
@@ -14,6 +15,15 @@ describe(Thermostat, () => {
       thermostat.up();
       thermostat.up();
       expect(thermostat.getTemperature()).toEqual(22);
+    })
+
+    it('has a maximum temperature of 32', () => {
+      thermostat2.setPowerSavingMode(false)
+      for (let i = 0 ; i < 12 ; i++) {
+        thermostat2.up();
+      }
+      thermostat2.up();
+      expect(thermostat2.getTemperature()).toEqual(32);
     })
   })
 
@@ -42,6 +52,13 @@ describe(Thermostat, () => {
       thermostat.up();
 
       expect(thermostat.getTemperature()).toEqual(25);
+    })
+
+    it('can be turned off', () => {
+      thermostat.setPowerSavingMode(false);
+      thermostat.up();
+
+      expect(thermostat.getTemperature()).toEqual(26);
     })
   })
 })
