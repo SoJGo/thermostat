@@ -61,4 +61,32 @@ describe(Thermostat, () => {
       expect(thermostat.getTemperature()).toEqual(26);
     })
   })
+
+  describe('reset', () => {
+    it('changes the temp to 20', () => {
+      thermostat.reset();
+      expect(thermostat.getTemperature()).toEqual(20);
+    })
+  })
+
+  describe('getEnergyUsage', () => {
+    it('returns low if temp < 18', () => {
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      expect(thermostat.getEnergyUsage()).toEqual('Low');
+    })
+
+    it('returns medium if temp <= 25', () => {
+        thermostat.up();
+      expect(thermostat.getEnergyUsage()).toEqual('Medium');
+    })
+
+    it('returns high if temp > 25', () => {
+      for (let i = 0 ; i < 8 ; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.getEnergyUsage()).toEqual('High');
+    })
+  })
 })
