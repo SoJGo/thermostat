@@ -12,7 +12,11 @@ class Thermostat {
   }
 
   down() {
-    this.temperature--;
+    if(this.temperature === 10) {
+      return 'It\'s freezing in here! I\'m not going any colder, sorry pal.';
+    } else {
+      this.temperature--;
+    }
   }
 }
 

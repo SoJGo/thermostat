@@ -23,5 +23,14 @@ describe(Thermostat, () => {
       thermostat.down();
       expect(thermostat.getTemperature()).toEqual(20);
     })
+
+    it('doesn\'t go below 10 degrees', () => {
+      for (let i = 0 ; i < 10 ; i++) {
+        thermostat.down();
+      }
+      thermostat.down();
+
+      expect(thermostat.getTemperature()).toEqual(10);
+    })
   })
 })
