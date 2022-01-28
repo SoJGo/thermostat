@@ -43,6 +43,24 @@ class Thermostat {
       return 'Medium';
     }
   }
+
+  isMin() {
+    if(this.temperature === 10){
+      return "(minimum reached)";
+    } else {
+      return "";
+    }
+  }
+
+  isMax() {
+    if(this.powerSavingMode && this.temperature === 25) {
+      return "(maximum reached)";
+    } else if(!this.powerSavingMode && this.temperature === 32) {
+      return "(maximum reached)";
+    } else {
+      return "";
+    }
+  }
 }
 
 module.exports = Thermostat;
